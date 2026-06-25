@@ -16,8 +16,11 @@
       --primary: #0066cc;
       --primary-dark: #004a99;
       --accent: #ff6600;
+      --accent-dark: #e65c00;
       --text: #333;
       --light: #f8f9fa;
+      --success: #16a34a;
+      --danger: #ef4444;
     }
     
     * {
@@ -111,55 +114,338 @@
       transform: scale(1.05);
     }
     
-    /* Hero */
+    /* HERO - UPDATED */
     #hero {
-      background: linear-gradient(rgba(0, 102, 204, 0.85), rgba(0, 74, 153, 0.9)), 
-                  url('https://images.unsplash.com/photo-1581578731548-6d4c5c9a5d7f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+      background:
+        linear-gradient(135deg, rgba(0, 48, 102, 0.88), rgba(0, 74, 153, 0.82)),
+        url('https://images.unsplash.com/photo-1581578731548-6d4c5c9a5d7f?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
       color: white;
-      padding: 120px 0 80px;
-      text-align: center;
+      padding: 70px 0 90px;
       position: relative;
+      overflow: hidden;
     }
-    
+
+    #hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.14), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(255,255,255,0.08), transparent 28%);
+      pointer-events: none;
+    }
+
     #hero .box {
-      max-width: 800px;
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
     }
-    
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .hero-left {
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .hero-badge .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+      animation: pulseGreen 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
     #hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 20px;
+      font-size: 3.35rem;
+      line-height: 1.08;
+      margin-bottom: 18px;
       font-weight: 800;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
     }
-    
+
+    #hero h1 .accent-text {
+      color: #ffd166;
+    }
+
     #hero .description {
-      font-size: 1.35rem;
-      margin-bottom: 30px;
+      font-size: 1.22rem;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,0.96);
+      max-width: 640px;
       font-weight: 500;
     }
-    
+
+    .hero-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 26px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-urgency .urgent-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff5a5a;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
     .button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       background: var(--accent);
       color: white;
-      padding: 18px 36px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      border-radius: 50px;
+      padding: 18px 34px;
+      font-size: 1.12rem;
+      font-weight: 800;
+      border-radius: 999px;
       text-decoration: none;
-      margin: 20px 0;
       transition: all 0.3s;
-      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+      box-shadow: 0 12px 28px rgba(255, 102, 0, 0.28);
+      min-height: 58px;
     }
     
     .button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(255, 102, 0, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(255, 102, 0, 0.35);
       background: #ff8533;
     }
-    
+
+    .button.secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: none;
+      backdrop-filter: blur(6px);
+    }
+
+    .button.secondary:hover {
+      background: rgba(255,255,255,0.18);
+      box-shadow: none;
+    }
+
+    .hero-phone-inline {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.96);
+      margin-bottom: 28px;
+    }
+
+    .hero-phone-inline strong {
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .hero-phone-inline a {
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 18px;
+      margin-top: 10px;
+      max-width: 720px;
+    }
+
+    .hero-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 14px 16px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-point svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      fill: #fff;
+      margin-top: 2px;
+    }
+
+    .hero-point p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.97);
+      color: #1f2937;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      max-width: 430px;
+      margin-left: auto;
+      position: relative;
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .hero-card-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+
+    .hero-card-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--success);
+      background: #ecfdf3;
+      padding: 8px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .hero-card-status::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--success);
+      display: inline-block;
+    }
+
+    .hero-card-sub {
+      color: #4b5563;
+      font-size: 1rem;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .hero-call-box {
+      background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+      border: 1px solid #fed7aa;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .hero-call-box .mini {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9a3412;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-call-box .big-phone {
+      display: block;
+      font-size: 1.9rem;
+      line-height: 1.2;
+      font-weight: 900;
+      color: var(--primary-dark);
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+
+    .hero-call-box .small-note {
+      color: #6b7280;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-card-cta {
+      width: 100%;
+      margin: 0 0 16px;
+      text-align: center;
+    }
+
+    .hero-mini-benefits {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-mini-benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.96rem;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    .hero-mini-benefit svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
     .review {
       background: rgba(255,255,255,0.95);
       color: #333;
@@ -276,11 +562,48 @@
     }
     
     /* Responsive */
-    @media (max-width: 768px) {
-      #hero h1 {
-        font-size: 2.4rem;
+    @media (max-width: 992px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
       }
-      
+
+      .hero-card {
+        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #hero {
+        padding: 50px 0 70px;
+      }
+
+      #hero h1 {
+        font-size: 2.3rem;
+      }
+
+      #hero .description {
+        font-size: 1.05rem;
+      }
+
+      .hero-badge,
+      .hero-urgency {
+        font-size: 0.9rem;
+      }
+
+      .hero-cta-row {
+        flex-direction: column;
+      }
+
+      .button,
+      .button.secondary {
+        width: 100%;
+      }
+
       .twocolumn {
         columns: 1;
       }
@@ -289,6 +612,14 @@
         flex-direction: column;
         gap: 15px;
         text-align: center;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .hero-call-box .big-phone {
+        font-size: 1.55rem;
       }
     }
   </style>
@@ -331,41 +662,129 @@
   
   <section id="hero">
     <div class="box">
-      <h1>24-Hr Plumbers <span class="geo"></span></h1>
-      <p class="description">We're Available for Same-Day Repairs! Call us 24/7 at <a href="tel:XXXXXXXXXX">(XXX) XXX-XX-XX</a></p>
-      <a class="button" href="tel:XXXXXXXXXX">
-        I Need Help Now
-        <svg viewBox="0 0 17 16">
-          <use xlink:href="/icons.svg?v=8#arrow"></use>
-        </svg>
-      </a>
-      <div class="review">
-        <div class="stars">
-          <svg><use xlink:href="/icons.svg?v8#star"></use></svg>
-          <svg><use xlink:href="/icons.svg?v8#star"></use></svg>
-          <svg><use xlink:href="/icons.svg?v8#star"></use></svg>
-          <svg><use xlink:href="/icons.svg?v8#star"></use></svg>
-          <svg><use xlink:href="/icons.svg?v8#star"></use></svg>
+      <div class="hero-wrap">
+        
+        <div class="hero-left">
+          <div class="hero-badge">
+            <span class="live-dot"></span>
+            24/7 Emergency Dispatch • Same-Day Plumbing Service
+          </div>
+
+          <h1>
+            Emergency <span class="geo"></span> Plumbers Available
+            <span class="accent-text">Right Now</span>
+          </h1>
+
+          <p class="description">
+            Burst pipe? Overflowing toilet? Water heater failure? Our licensed plumbing pros are standing by 24/7 for fast same-day repairs, urgent service calls, and no-obligation quotes.
+          </p>
+
+          <div class="hero-urgency">
+            <span class="urgent-dot"></span>
+            Limited same-day slots may fill fast — call now to get connected with an available local plumber.
+          </div>
+
+          <div class="hero-cta-row">
+            <a class="button" href="tel:XXXXXXXXXX">
+              Call Now For Immediate Help
+              <svg viewBox="0 0 17 16">
+                <use xlink:href="/icons.svg?v=8#arrow"></use>
+              </svg>
+            </a>
+
+            <a class="button secondary" href="tel:XXXXXXXXXX">
+              Get a Fast Plumbing Quote
+              <svg viewBox="0 0 17 16">
+                <use xlink:href="/icons.svg?v=8#arrow"></use>
+              </svg>
+            </a>
+          </div>
+
+          <div class="hero-phone-inline">
+            <span>Speak with a live plumbing specialist now:</span>
+            <strong><a href="tel:XXXXXXXXXX">(XXX) XXX-XX-XX</a></strong>
+          </div>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <svg viewBox="0 0 32 32">
+                <use xlink:href="/icons.svg?v=8#check"></use>
+              </svg>
+              <p>Emergency plumbing help 24 hours a day, 7 days a week</p>
+            </div>
+
+            <div class="hero-point">
+              <svg viewBox="0 0 32 32">
+                <use xlink:href="/icons.svg?v=8#check"></use>
+              </svg>
+              <p>Fast dispatch for urgent leaks, clogs, backups & water heater issues</p>
+            </div>
+
+            <div class="hero-point">
+              <svg viewBox="0 0 32 32">
+                <use xlink:href="/icons.svg?v=8#check"></use>
+              </svg>
+              <p>Upfront options and no-obligation price quotes before work begins</p>
+            </div>
+
+            <div class="hero-point">
+              <svg viewBox="0 0 32 32">
+                <use xlink:href="/icons.svg?v=8#check"></use>
+              </svg>
+              <p>Trusted local plumbing pros for residential repairs and replacements</p>
+            </div>
+          </div>
         </div>
-        <p>Trusted By Over 250,000 People Since 2017</p>
-      </div>
-      <div class="bullets">
-        <div class="bullet check">
-          <svg class="check__icon"><use xlink:href="/icons.svg?v=8#check"></use></svg>
-          <p>Available 24-Hours, 7 Days a Week</p>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-top">
+              <div class="hero-card-title">Need a plumber today?</div>
+              <div class="hero-card-status">Dispatching Now</div>
+            </div>
+
+            <p class="hero-card-sub">
+              Call now to get connected with a local plumbing professional for same-day service, emergency repairs, and fast appointment scheduling.
+            </p>
+
+            <div class="hero-call-box">
+              <div class="mini">24/7 Emergency Call Line</div>
+              <a class="big-phone" href="tel:XXXXXXXXXX">(XXX) XXX-XX-XX</a>
+              <div class="small-note">Call now to check immediate availability in <span class="geo"></span>.</div>
+            </div>
+
+            <a class="button hero-card-cta" href="tel:XXXXXXXXXX">
+              Get Help Now
+              <svg viewBox="0 0 17 16">
+                <use xlink:href="/icons.svg?v=8#arrow"></use>
+              </svg>
+            </a>
+
+            <div class="hero-mini-benefits">
+              <div class="hero-mini-benefit">
+                <svg viewBox="0 0 32 32">
+                  <use xlink:href="/icons.svg?v=8#check"></use>
+                </svg>
+                <span>Same-day appointments available based on local scheduling.</span>
+              </div>
+
+              <div class="hero-mini-benefit">
+                <svg viewBox="0 0 32 32">
+                  <use xlink:href="/icons.svg?v=8#check"></use>
+                </svg>
+                <span>Emergency service for leaks, drains, toilets, sewer and water heaters.</span>
+              </div>
+
+              <div class="hero-mini-benefit">
+                <svg viewBox="0 0 32 32">
+                  <use xlink:href="/icons.svg?v=8#check"></use>
+                </svg>
+                <span>Quick scheduling by phone — no long forms, no waiting around.</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="bullet check">
-          <svg class="check__icon"><use xlink:href="/icons.svg?v=8#check"></use></svg>
-          <p>Quick, Same-Day Appointments</p>
-        </div>
-        <div class="bullet check">
-          <svg class="check__icon"><use xlink:href="/icons.svg?v=8#check"></use></svg>
-          <p>Insured Plumbing Pros</p>
-        </div>
-        <div class="bullet check">
-          <svg class="check__icon"><use xlink:href="/icons.svg?v=8#check"></use></svg>
-          <p>Fast, No-Obligation Price Quotes</p>
-        </div>
+
       </div>
     </div>
   </section>
